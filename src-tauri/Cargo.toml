@@ -1,0 +1,31 @@
+[package]
+name = "deepclean"
+version = "0.1.0"
+description = "A free, open-source Mac cleaner that only moves files to the Trash."
+authors = ["Mohammed Faizan Mohiuddin"]
+license = "MIT"
+repository = "https://github.com/faizanmohiuddin482/deepclean"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+# The `_lib` suffix may seem redundant but it is necessary
+# to make the lib name unique and wouldn't conflict with the bin name.
+# This seems to be only an issue on Windows, see https://github.com/rust-lang/cargo/issues/8519
+name = "deepclean_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-opener = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+trash = "5"
+walkdir = "2"
+dirs = "5"
+rayon = "1"
+
